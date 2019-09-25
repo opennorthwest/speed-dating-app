@@ -2,96 +2,11 @@
 
 <%= form_for [@user] do |f| %>
 
-  <%= f.label :display_name %>
-  <%= f.text_field :display_name %>
-
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
-
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %>
-
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-
-  <%= f.label :age %>
-  <%= f.text_field :age %>
-
-  <%= f.label :gender, 'Transgender Woman' %>
-  <%= f.radio_button :gender, 'transgender woman' %>
-  <%= f.label :gender, 'Transgender Man' %>
-  <%= f.radio_button :gender, 'transgender man' %>
-  <%= f.label :gender, 'Cis Woman' %>
-  <%= f.radio_button :gender, 'cis woman' %>
-  <%= f.label :gender, 'Cis Man' %>
-  <%= f.radio_button :gender, 'cis man' %>
-  <%= f.label :gender, 'Non-Binary, Gender Fluid, Gender Queer' %>
-  <%= f.radio_button :gender, 'non-binary, gender fluid, gender queer' %>
-  <%= f.label :gender, 'None of the above apply' %>
-  <%= f.radio_button :gender, 'none of the above apply' %>
-
-  <%= f.label :location, 'Eastside' %>
-  <%= f.check_box :location, 'eastside' %>
-  <%= f.label :location, 'Gresham / further east' %>
-  <%= f.check_box :location, 'far east' %>
-  <%= f.label :location, 'Westside' %>
-  <%= f.check_box :location, 'westside' %>
-  <%= f.label :location, 'Beaverton / Hillsboro/ further west' %>
-  <%= f.check_box :location, 'far west' %>
-  <%= f.label :location, 'North' %>
-  <%= f.check_box :location, 'north' %>
-  <%= f.label :location, 'Vancouver / further north' %>
-  <%= f.check_box :location, 'far north' %>
-  <%= f.label :location, 'Milwaukie / further south' %>
-  <%= f.check_box :location, 'far south' %>
-
-  <%= f.label :friend_dates, 'Yes' %>
-  <%= f.radio_button :gender, 'true' %>
-  <%= f.label :friend_dates, 'No' %>
-  <%= f.radio_button :gender, 'false' %>
-
-  <%= f.label :stationary, 'Yes' %>
-  <%= f.radio_button :stationary, 'true' %>
-  <%= f.label :stationary, 'No' %>
-  <%= f.radio_button :stationary, 'false' %>
-
-  <%= f.label :email_list, 'Yes' %>
-  <%= f.radio_button :email_list, 'true' %>
-  <%= f.label :email_list, 'No' %>
-  <%= f.radio_button :email_list, 'false' %>
-
-  <%= f.label :referral %>
-  <%= f.text_field :referral %>
-
-  <%= f.label :display_name %>
-  <%= f.text_area(:display_name, cols: 30, rows: 10)  %>
-
-  <%= f.label :not_in_primary, 'Yes' %>
-  <%= f.radio_button :not_in_primary, 'true' %>
-  <%= f.label :not_in_primary, 'No' %>
-  <%= f.radio_button :not_in_primary, 'false' %>
-
-
-  <%= f.label :primary_interest, 'I strongly prefer not being matched with those looking for primary relationships.' %>
-  <%= f.radio_button :primary_interest, 1 %>
-  <%= f.label :primary_interest, 'I have no strong preference' %>
-  <%= f.radio_button :primary_interest, 2 %>
-  <%= f.label :primary_interest, 'I strongly prefer to be matched with those looking for primary relationships.' %>
-  <%= f.radio_button :primary_interest, 3 %>
-
-  <%= f.label :kinky, 'Yes' %>
-  <%= f.radio_button :kinky, 'true' %>
-  <%= f.label :kinky, 'No' %>
-  <%= f.radio_button :kinky, 'false' %>
-
-
   
-  <%= f.label :kink_interest, 'I strongly prefer not being matched with those looking for primary relationships.' %>
-  <%= f.radio_button :kink_interest, 1 %>
-  <%= f.label :kink_interest, 'I have no strong preference' %>
-  <%= f.radio_button :kink_interest, 2 %>
-  <%= f.label :kink_interest, 'I strongly prefer to be matched with those looking for primary relationships.' %>
-  <%= f.radio_button :kink_interest, 3 %>
+
+
+
+
 
 
   <p><%= f.submit %></p>

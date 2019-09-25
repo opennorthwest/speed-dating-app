@@ -1,0 +1,23 @@
+<%= f.label :display_name %>
+<%= f.text_field :display_name %>
+
+<%= f.label :first_name %>
+<%= f.text_field :first_name %>
+
+<%= f.label :last_name %>
+<%= f.text_field :last_name %>
+<%= f.label :age %>
+<%= f.text_field :age %>
+
+<%= f.label :email %>
+<%= f.text_field :email %>
+<%= f.label :email_list, 'Yes' %>
+<%= f.radio_button :email_list, 'true' %>
+<%= f.label :email_list, 'No' %>
+<%= f.radio_button :email_list, 'false' %>
+
+
+<%= f.label :referral %>
+<%= f.text_field :referral %>
+<%= f.label :comments %>
+<%= f.text_area(:comments, cols: 30, rows: 10)  %>

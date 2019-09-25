@@ -8,7 +8,6 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :email
       t.integer :age
       t.string :gender
-      t.string  :location
       t.boolean :friend_dates
       t.string :referral
       t.boolean :stationary
@@ -22,11 +21,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
 
       t.boolean :kinky
       t.integer :kink_interest
-      t.boolean :kink_top
-      t.boolean :kink_bottom
-      t.boolean :kink_switch
-      t.boolean :kink_neither
-      t.boolean :kink_unsure
+      t.string  :kink_role
 
 
 
