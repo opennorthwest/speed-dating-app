@@ -10,13 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_24_211112) do
+ActiveRecord::Schema.define(version: 2019_09_25_071825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "start"
+    t.datetime "finish"
+    t.boolean "published"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "events_users", id: false, force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "event_id", null: false
+  end
+
   create_table "locations", force: :cascade do |t|
     t.string "area"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_locations", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -39,11 +59,7 @@ ActiveRecord::Schema.define(version: 2019_09_24_211112) do
     t.boolean "must_match_whole_group"
     t.boolean "kinky"
     t.integer "kink_interest"
-    t.boolean "kink_top"
-    t.boolean "kink_bottom"
-    t.boolean "kink_switch"
-    t.boolean "kink_neither"
-    t.boolean "kink_unsure"
+    t.string "kink_role"
     t.integer "target_age_floor"
     t.integer "target_age_ceiling"
     t.integer "target_gender_tw"
