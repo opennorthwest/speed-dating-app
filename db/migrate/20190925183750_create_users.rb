@@ -9,7 +9,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.boolean :email_list
       t.string :referral
       t.string :comments
-      # t.integer :age
+      t.integer :age
       # t.string :gender
       #
       # t.boolean :friend_dates
