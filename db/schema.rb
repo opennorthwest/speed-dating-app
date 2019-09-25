@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_25_183750) do
+ActiveRecord::Schema.define(version: 2019_09_25_211049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "genders", force: :cascade do |t|
+    t.string "gender"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "display_name"
@@ -24,8 +30,10 @@ ActiveRecord::Schema.define(version: 2019_09_25_183750) do
     t.string "referral"
     t.string "comments"
     t.integer "age"
+    t.integer "gender_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "users", "genders"
 end

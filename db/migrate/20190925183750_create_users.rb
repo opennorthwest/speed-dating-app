@@ -10,7 +10,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :referral
       t.string :comments
       t.integer :age
-      # t.string :gender
+      t.integer :gender_id
       #
       # t.boolean :friend_dates
       # t.boolean :stationary

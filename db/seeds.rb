@@ -1,0 +1,6 @@
+Gender.create!(gender: "TW")
+Gender.create!(gender: "TM")
+Gender.create!(gender: "CW")
+Gender.create!(gender: "CM")
+Gender.create!(gender: "NB")
+Gender.create!(gender: "NA")
