@@ -1,24 +1,38 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Development
 
-Things you may want to cover:
+### Development in docker.
+Please have [docker](https://www.docker.com/products/docker-desktop) and [docker-compose](https://docs.docker.com/compose/install/) installed.
 
-* Ruby version
+Check out the code:
+`git clone https://github.com/opennorthwest/speed-dating-app`
 
-* System dependencies
+Build the docker image:
+```$ docker-compose build
+postgres uses an image, skipping
+Building app
+Step 1/10 : FROM ruby:2.5.1
+ ---> 3c8181e703d2
+<snipped>
+Removing intermediate container 790b130712d8
+ ---> 207a23974153
 
-* Configuration
+Successfully built 207a23974153
+Successfully tagged speed-dating-app_app:latest
+```
 
-* Database creation
+Start the docker containers:
+```$ docker-compose up
+Starting speed-dating-app_postgres_1 ... done
+Starting speed-dating-app_app_1      ... done
+Attaching to speed-dating-app_postgres_1, speed-dating-app_app_1
+```
 
-* Database initialization
+Create the database:
+`$ docker-compose exec app bundle exec rake db:create`
 
-* How to run the test suite
+Run migrations if you haven't:
+`$ docker-compose exec app bundle exec rake db:migrate`
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+At this point, you should be able to browse to the application on localhost:3000

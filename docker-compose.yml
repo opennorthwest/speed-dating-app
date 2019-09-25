@@ -1,0 +1,21 @@
+version: "3.7"
+services:
+  app:
+    build: .
+    command: ./entrypoint.sh
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    environment:
+      DBHOST: 'postgres'
+      DBUSER: 'postgres'
+      RAILS_ENV: 'development'
+    links:
+      - postgres
+  postgres:
+    image: postgres:latest
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    ports:
+      - "5432"
