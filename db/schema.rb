@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_26_185254) do
+ActiveRecord::Schema.define(version: 2019_09_26_212210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,15 @@ ActiveRecord::Schema.define(version: 2019_09_26_185254) do
     t.index ["user_id"], name: "index_target_genders_on_user_id"
   end
 
+  create_table "target_kink_roles", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "kink_role_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["kink_role_id"], name: "index_target_kink_roles_on_kink_role_id"
+    t.index ["user_id"], name: "index_target_kink_roles_on_user_id"
+  end
+
   create_table "user_locations", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "location_id"
@@ -78,6 +87,7 @@ ActiveRecord::Schema.define(version: 2019_09_26_185254) do
     t.boolean "kinky"
     t.integer "kink_interest_id"
     t.integer "kink_role_id"
+    t.integer "target_kink_role"
     t.boolean "dates_groups"
     t.boolean "must_match_whole_group"
     t.boolean "friend_dates"
@@ -94,6 +104,8 @@ ActiveRecord::Schema.define(version: 2019_09_26_185254) do
   add_foreign_key "locations", "users"
   add_foreign_key "target_genders", "genders"
   add_foreign_key "target_genders", "users"
+  add_foreign_key "target_kink_roles", "kink_roles"
+  add_foreign_key "target_kink_roles", "users"
   add_foreign_key "user_locations", "locations"
   add_foreign_key "user_locations", "users"
 end

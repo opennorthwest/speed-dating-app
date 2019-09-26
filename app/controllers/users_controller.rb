@@ -19,6 +19,7 @@ class UsersController < ApplicationController
     @kink_interest = KinkInterest.all.map{ |k| [k.kink_interest, k.id]}
     @kink_role = KinkRole.all.map{ |r| [r.kink_role, r.id]}
     @location = Location.all.map{ |l| [l.location, l.id] }
+    @target_kink_role = KinkRole.all.map{ |tk| [tk.kink_role, tk.id]}
   end
 
   # GET /users/1/edit
@@ -73,6 +74,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-    params.require(:user).permit(:display_name, :first_name, :last_name, :email, :email_list, :referral, :comments, :age, :gender_id, :kinky, :kink_interest_id, :kink_role_id, :dates_groups, :must_match_whole_group, :friend_dates, :stationary, :target_age_floor, :target_age_ceiling, gender_ids:[], location_ids:[])
+    params.require(:user).permit(:display_name, :first_name, :last_name, :email, :email_list, :referral, :comments, :age, :gender_id, :kinky, :kink_interest_id, :kink_role_id, :dates_groups, :must_match_whole_group, :friend_dates, :stationary, :target_age_floor, :target_age_ceiling, gender_ids:[], location_ids:[], kink_role_ids:[])
   end
 end

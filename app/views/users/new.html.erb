@@ -41,6 +41,9 @@
 </br>
 
 <%= f.select(:kink_role_id, @kink_role) %>
+<h3> Target kink roles are </h3>
+
+<%= f.collection_check_boxes(:kink_role_ids, KinkRole.all, :id, :kink_role) %>
 
 <h2> Dates Group Section </h2>
 dates groups
@@ -77,8 +80,7 @@ stationary
 
 <h3> Target Genders </h3>
 <%= f.collection_check_boxes(:gender_ids, Gender.all, :id, :gender) %>
-<h3> Target Will Date Genders </h3>
-<%= f.collection_check_boxes(:gender_ids, Gender.all, :id, :gender) %>
+
 
 <h3> Date Locations </h3>
 <%= f.collection_check_boxes(:location_ids, Location.all, :id, :location) %>

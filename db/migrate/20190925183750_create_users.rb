@@ -18,6 +18,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.boolean :kinky
       t.integer :kink_interest_id
       t.integer :kink_role_id
+      t.integer :target_kink_role
       t.boolean :dates_groups
       t.boolean :must_match_whole_group
       t.boolean :friend_dates
@@ -27,17 +28,6 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       # # TARGET
       t.integer :target_age_floor
       t.integer :target_age_ceiling
-        
-      #
-      # t.integer :target_opento_tw
-      # t.integer :target_opento_tm
-      # t.integer :target_opento_cw
-      # t.integer :target_opento_cm
-      # t.integer :target_opento_nb
-      # t.integer :target_opento_na
-      #
-      # t.boolean :target_kinky
-      # t.boolean :target_kink_top
       # t.boolean :target_kink_bottom
       # t.boolean :target_kink_switch
       # t.boolean :target_kink_neither
