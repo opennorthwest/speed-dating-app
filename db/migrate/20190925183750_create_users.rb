@@ -1,6 +1,10 @@
 class CreateUsers < ActiveRecord::Migration[5.2]
   def change
     create_table :users do |t|
+
+      # t.boolean :is_a_group
+      # t.integer :group_id
+
       # DEMOGRAPHICS
       t.string :display_name
       t.string :first_name
@@ -11,18 +15,13 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :comments
       t.integer :age
       t.integer :gender_id
-      #
-      # t.boolean :friend_dates
-      # t.boolean :stationary
-      # t.boolean :not_in_primary
-      # t.integer :primary_interest
-      # t.boolean :dates_groups
-      # t.boolean :must_match_whole_group
-      #
-      # t.boolean :kinky
-      # t.integer :kink_interest
-      # t.string  :kink_role
-
+      t.boolean :kinky
+      t.integer :kink_interest_id
+      t.integer :kink_role_id
+      t.boolean :dates_groups
+      t.boolean :must_match_whole_group
+      t.boolean :friend_dates
+      t.boolean :stationary
 
 
       # # TARGET

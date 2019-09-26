@@ -15,6 +15,9 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    @gender = Gender.all.map{ |g| [ g.gender, g.id ] }
+    @kink_interest = KinkInterest.all.map{ |k| [k.kink_interest, k.id]}
+    @kink_role = KinkRole.all.map{ |r| [r.kink_role, r.id]}
   end
 
   # GET /users/1/edit
@@ -25,8 +28,6 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-    @gender = Gender.all
-    @post = Post.new
 
     respond_to do |format|
       if @user.save
@@ -71,6 +72,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-    params.require(:user).permit(:display_name, :first_name, :last_name, :email, :email_list, :referral, :comments, :age, :gender_id)
+    params.require(:user).permit(:display_name, :first_name, :last_name, :email, :email_list, :referral, :comments, :age, :gender_id, :kinky, :kink_interest_id, :kink_role_id, :dates_groups, :must_match_whole_group, :friend_dates, :stationary)
   end
 end
