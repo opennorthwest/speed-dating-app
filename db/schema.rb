@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_26_015119) do
+ActiveRecord::Schema.define(version: 2019_09_26_161001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,15 @@ ActiveRecord::Schema.define(version: 2019_09_26_015119) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "target_genders", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "gender_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gender_id"], name: "index_target_genders_on_gender_id"
+    t.index ["user_id"], name: "index_target_genders_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "display_name"
     t.string "first_name"
@@ -50,10 +59,14 @@ ActiveRecord::Schema.define(version: 2019_09_26_015119) do
     t.boolean "must_match_whole_group"
     t.boolean "friend_dates"
     t.boolean "stationary"
+    t.integer "target_age_floor"
+    t.integer "target_age_ceiling"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "target_genders", "genders"
+  add_foreign_key "target_genders", "users"
   add_foreign_key "users", "genders"
   add_foreign_key "users", "kink_interests"
   add_foreign_key "users", "kink_roles"

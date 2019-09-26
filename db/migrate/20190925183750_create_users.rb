@@ -25,14 +25,10 @@ class CreateUsers < ActiveRecord::Migration[5.2]
 
 
       # # TARGET
-      # t.integer :target_age_floor
-      # t.integer :target_age_ceiling
-      # t.integer :target_gender_tw
-      # t.integer :target_gender_tm
-      # t.integer :target_gender_cw
-      # t.integer :target_gender_cm
-      # t.integer :target_gender_nb
-      # t.integer :target_gender_na
+      t.integer :target_age_floor
+      t.integer :target_age_ceiling
+
+      # t.integer :target_gender
       #
       # t.integer :target_opento_tw
       # t.integer :target_opento_tm

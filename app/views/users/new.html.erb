@@ -60,11 +60,25 @@ friend dates
 <%= f.radio_button :friend_dates, 'true' %>
 <%= f.label :friend_dates, 'No' %>
 <%= f.radio_button :friend_dates, 'false' %>
+
+</br>
 stationary
 <%= f.label :stationary, 'Yes' %>
 <%= f.radio_button :stationary, 'true' %>
 <%= f.label :stationary, 'No' %>
 <%= f.radio_button :stationary, 'false' %>
+
+
+<h3> Target Age </h3>
+<%= f.label :target_age_floor %>
+<%= f.number_field :target_age_floor %>
+<%= f.label :target_age_ceiling %>
+<%= f.number_field :target_age_ceiling %>
+
+<h3> Target Gender </h3>
+
+
+<%= f.collection_check_boxes(:gender_ids, Gender.all, :id, :gender) %>
 
   <p><%= f.submit %></p>
 <% end %>
