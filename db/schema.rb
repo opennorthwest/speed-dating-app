@@ -10,27 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_26_161001) do
+ActiveRecord::Schema.define(version: 2019_09_26_185254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "genders", force: :cascade do |t|
     t.string "gender"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_genders_on_user_id"
   end
 
   create_table "kink_interests", force: :cascade do |t|
     t.string "kink_interest"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_kink_interests_on_user_id"
   end
 
   create_table "kink_roles", force: :cascade do |t|
     t.string "kink_role"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_kink_roles_on_user_id"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "location"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_locations_on_user_id"
   end
 
   create_table "target_genders", force: :cascade do |t|
@@ -40,6 +54,15 @@ ActiveRecord::Schema.define(version: 2019_09_26_161001) do
     t.datetime "updated_at", null: false
     t.index ["gender_id"], name: "index_target_genders_on_gender_id"
     t.index ["user_id"], name: "index_target_genders_on_user_id"
+  end
+
+  create_table "user_locations", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "location_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_id"], name: "index_user_locations_on_location_id"
+    t.index ["user_id"], name: "index_user_locations_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -65,9 +88,12 @@ ActiveRecord::Schema.define(version: 2019_09_26_161001) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "genders", "users"
+  add_foreign_key "kink_interests", "users"
+  add_foreign_key "kink_roles", "users"
+  add_foreign_key "locations", "users"
   add_foreign_key "target_genders", "genders"
   add_foreign_key "target_genders", "users"
-  add_foreign_key "users", "genders"
-  add_foreign_key "users", "kink_interests"
-  add_foreign_key "users", "kink_roles"
+  add_foreign_key "user_locations", "locations"
+  add_foreign_key "user_locations", "users"
 end

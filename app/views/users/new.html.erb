@@ -75,10 +75,13 @@ stationary
 <%= f.label :target_age_ceiling %>
 <%= f.number_field :target_age_ceiling %>
 
-<h3> Target Gender </h3>
-
-
+<h3> Target Genders </h3>
 <%= f.collection_check_boxes(:gender_ids, Gender.all, :id, :gender) %>
+<h3> Target Will Date Genders </h3>
+<%= f.collection_check_boxes(:gender_ids, Gender.all, :id, :gender) %>
+
+<h3> Date Locations </h3>
+<%= f.collection_check_boxes(:location_ids, Location.all, :id, :location) %>
 
   <p><%= f.submit %></p>
 <% end %>
