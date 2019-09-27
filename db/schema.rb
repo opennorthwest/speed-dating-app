@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2019_09_26_212210) do
 
   # These are extensions that must be enabled in order to support this database
@@ -37,6 +38,21 @@ ActiveRecord::Schema.define(version: 2019_09_26_212210) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_kink_roles_on_user_id"
+
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "start"
+    t.datetime "finish"
+    t.boolean "published"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "events_users", id: false, force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "event_id", null: false
+
   end
 
   create_table "locations", force: :cascade do |t|
@@ -74,6 +90,11 @@ ActiveRecord::Schema.define(version: 2019_09_26_212210) do
     t.index ["user_id"], name: "index_user_locations_on_user_id"
   end
 
+  create_table "user_locations", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "display_name"
     t.string "first_name"
@@ -90,8 +111,10 @@ ActiveRecord::Schema.define(version: 2019_09_26_212210) do
     t.integer "target_kink_role"
     t.boolean "dates_groups"
     t.boolean "must_match_whole_group"
+
     t.boolean "friend_dates"
     t.boolean "stationary"
+
     t.integer "target_age_floor"
     t.integer "target_age_ceiling"
     t.datetime "created_at", null: false

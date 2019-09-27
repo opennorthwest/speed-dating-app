@@ -11,4 +11,6 @@ class User < ApplicationRecord
 
   has_many :target_kink_roles
   has_many :kink_roles, through: :target_kink_roles
+  
+  has_and_belongs_to_many :events
 end
