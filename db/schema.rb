@@ -10,10 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_25_071825) do
+
+ActiveRecord::Schema.define(version: 2019_09_26_212210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "genders", force: :cascade do |t|
+    t.string "gender"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_genders_on_user_id"
+  end
+
+  create_table "kink_interests", force: :cascade do |t|
+    t.string "kink_interest"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_kink_interests_on_user_id"
+  end
+
+  create_table "kink_roles", force: :cascade do |t|
+    t.string "kink_role"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_kink_roles_on_user_id"
 
   create_table "events", force: :cascade do |t|
     t.string "name"
@@ -28,12 +52,42 @@ ActiveRecord::Schema.define(version: 2019_09_25_071825) do
   create_table "events_users", id: false, force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "event_id", null: false
+
   end
 
   create_table "locations", force: :cascade do |t|
-    t.string "area"
+    t.string "location"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_locations_on_user_id"
+  end
+
+  create_table "target_genders", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "gender_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gender_id"], name: "index_target_genders_on_gender_id"
+    t.index ["user_id"], name: "index_target_genders_on_user_id"
+  end
+
+  create_table "target_kink_roles", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "kink_role_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["kink_role_id"], name: "index_target_kink_roles_on_kink_role_id"
+    t.index ["user_id"], name: "index_target_kink_roles_on_user_id"
+  end
+
+  create_table "user_locations", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "location_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_id"], name: "index_user_locations_on_location_id"
+    t.index ["user_id"], name: "index_user_locations_on_user_id"
   end
 
   create_table "user_locations", force: :cascade do |t|
@@ -46,44 +100,35 @@ ActiveRecord::Schema.define(version: 2019_09_25_071825) do
     t.string "first_name"
     t.string "last_name"
     t.string "email"
-    t.integer "age"
-    t.string "gender"
-    t.boolean "friend_dates"
-    t.string "referral"
-    t.boolean "stationary"
     t.boolean "email_list"
+    t.string "referral"
     t.string "comments"
-    t.boolean "not_in_primary"
-    t.integer "primary_interest"
+    t.integer "age"
+    t.integer "gender_id"
+    t.boolean "kinky"
+    t.integer "kink_interest_id"
+    t.integer "kink_role_id"
+    t.integer "target_kink_role"
     t.boolean "dates_groups"
     t.boolean "must_match_whole_group"
-    t.boolean "kinky"
-    t.integer "kink_interest"
-    t.string "kink_role"
+
+    t.boolean "friend_dates"
+    t.boolean "stationary"
+
     t.integer "target_age_floor"
     t.integer "target_age_ceiling"
-    t.integer "target_gender_tw"
-    t.integer "target_gender_tm"
-    t.integer "target_gender_cw"
-    t.integer "target_gender_cm"
-    t.integer "target_gender_nb"
-    t.integer "target_gender_na"
-    t.integer "target_opento_tw"
-    t.integer "target_opento_tm"
-    t.integer "target_opento_cw"
-    t.integer "target_opento_cm"
-    t.integer "target_opento_nb"
-    t.integer "target_opento_na"
-    t.boolean "target_kinky"
-    t.boolean "target_kink_top"
-    t.boolean "target_kink_bottom"
-    t.boolean "target_kink_switch"
-    t.boolean "target_kink_neither"
-    t.boolean "target_kink_unsure"
-    t.boolean "target_is_group"
-    t.string "target_location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "genders", "users"
+  add_foreign_key "kink_interests", "users"
+  add_foreign_key "kink_roles", "users"
+  add_foreign_key "locations", "users"
+  add_foreign_key "target_genders", "genders"
+  add_foreign_key "target_genders", "users"
+  add_foreign_key "target_kink_roles", "kink_roles"
+  add_foreign_key "target_kink_roles", "users"
+  add_foreign_key "user_locations", "locations"
+  add_foreign_key "user_locations", "users"
 end

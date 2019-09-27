@@ -1,0 +1,2 @@
+class KinkInterest < ApplicationRecord
+end

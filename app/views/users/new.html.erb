@@ -2,12 +2,88 @@
 
 <%= form_for [@user] do |f| %>
 
-  
+<%= f.label :display_name %>
+<%= f.text_field :display_name %>
+
+<%= f.label :first_name %>
+<%= f.text_field :first_name %>
+
+<%= f.label :last_name %>
+<%= f.text_field :last_name %>
+<%= f.label :age %>
+<%= f.number_field :age %>
+
+<%= f.label :email %>
+<%= f.text_field :email %>
+<%= f.label :email_list, 'Yes' %>
+<%= f.radio_button :email_list, 'true' %>
+<%= f.label :email_list, 'No' %>
+<%= f.radio_button :email_list, 'false' %>
 
 
+<%= f.label :referral %>
+<%= f.text_field :referral %>
+<%= f.label :comments %>
+<%= f.text_area(:comments, cols: 30, rows: 10)  %>
+
+<h2>Gender Section</h2>
+ <%= f.select(:gender_id, @gender) %>
+
+<h2>Kink Section</h2>
+
+<%= f.label :kinky, 'Yes' %>
+<%= f.radio_button :kinky, 'true' %>
+<%= f.label :kinky, 'No' %>
+<%= f.radio_button :kinky, 'false' %>
+</br>
+</br>
+<%= f.select(:kink_interest_id, @kink_interest) %>
+</br>
+
+<%= f.select(:kink_role_id, @kink_role) %>
+<h3> Target kink roles are </h3>
+
+<%= f.collection_check_boxes(:kink_role_ids, KinkRole.all, :id, :kink_role) %>
+
+<h2> Dates Group Section </h2>
+dates groups
+<%= f.label :dates_groups, 'Yes' %>
+<%= f.radio_button :dates_groups, 'true' %>
+<%= f.label :dates_groups, 'No' %>
+<%= f.radio_button :dates_groups, 'false' %>
+whole group
+<%= f.label :must_match_whole_group, 'Yes' %>
+<%= f.radio_button :must_match_whole_group, 'true' %>
+<%= f.label :must_match_whole_group, 'No' %>
+<%= f.radio_button :must_match_whole_group, 'false' %>
+
+<h2>Event Section </h2>
+friend dates
+<%= f.label :friend_dates, 'Yes' %>
+<%= f.radio_button :friend_dates, 'true' %>
+<%= f.label :friend_dates, 'No' %>
+<%= f.radio_button :friend_dates, 'false' %>
+
+</br>
+stationary
+<%= f.label :stationary, 'Yes' %>
+<%= f.radio_button :stationary, 'true' %>
+<%= f.label :stationary, 'No' %>
+<%= f.radio_button :stationary, 'false' %>
 
 
+<h3> Target Age </h3>
+<%= f.label :target_age_floor %>
+<%= f.number_field :target_age_floor %>
+<%= f.label :target_age_ceiling %>
+<%= f.number_field :target_age_ceiling %>
 
+<h3> Target Genders </h3>
+<%= f.collection_check_boxes(:gender_ids, Gender.all, :id, :gender) %>
+
+
+<h3> Date Locations </h3>
+<%= f.collection_check_boxes(:location_ids, Location.all, :id, :location) %>
 
   <p><%= f.submit %></p>
 <% end %>

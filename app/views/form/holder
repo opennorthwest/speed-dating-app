@@ -10,3 +10,9 @@
 <%= f.radio_button :gender, 'non-binary, gender fluid, gender queer' %>
 <%= f.label :gender, 'None of the above apply' %>
 <%= f.radio_button :gender, 'none of the above apply' %>
+
+
+<%= f.label :not_in_primary, 'Yes' %>
+<%= f.radio_button :not_in_primary, 'true' %>
+<%= f.label :not_in_primary, 'No' %>
+<%= f.radio_button :not_in_primary, 'false' %>
