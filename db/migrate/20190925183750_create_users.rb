@@ -28,15 +28,6 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       # # TARGET
       t.integer :target_age_floor
       t.integer :target_age_ceiling
-      # t.boolean :target_kink_bottom
-      # t.boolean :target_kink_switch
-      # t.boolean :target_kink_neither
-      # t.boolean :target_kink_unsure
-      #
-      # t.boolean :target_is_group
-      #
-      # t.string :target_location
-
       t.timestamps
     end
   end
