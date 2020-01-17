@@ -7,6 +7,7 @@ class CreateEvents < ActiveRecord::Migration[5.2]
       t.datetime :finish
       t.boolean :published
 
+
       t.timestamps
     end
   end

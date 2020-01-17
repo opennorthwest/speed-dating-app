@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :hosts
+  resources :organizations
   get 'pages/home'
   devise_for :views
   devise_for :users
