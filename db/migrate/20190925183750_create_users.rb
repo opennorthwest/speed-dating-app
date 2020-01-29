@@ -9,7 +9,6 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :display_name
       t.string :first_name
       t.string :last_name
-      t.string :email
       t.boolean :email_list
       t.string :referral
       t.string :comments

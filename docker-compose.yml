@@ -2,7 +2,7 @@ version: "3.7"
 services:
   app:
     build: .
-    command: ./entrypoint.sh
+    command: [ './wait_for_pg.sh', 'postgres',  'bin/entry', "bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
     volumes:
       - .:/usr/src/app
     ports:
@@ -11,6 +11,8 @@ services:
       DBHOST: 'postgres'
       DBUSER: 'postgres'
       RAILS_ENV: 'development'
+    depends_on:
+      - "postgres"
     links:
       - postgres
   postgres:

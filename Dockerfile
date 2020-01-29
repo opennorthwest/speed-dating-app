@@ -1,6 +1,10 @@
 FROM ruby:2.5.1
 
-RUN gem install bundler -v 2.0.2 
+RUN gem install bundler -v 2.0.2 && \
+    apt update && \
+    apt install -y --no-install-recommends postgresql-client && \
+    rm -rf /var/lib/apt/lists/*
+
 ENV BUNDLER_VERSION 2.0.2
 # throw errors if Gemfile has been modified since Gemfile.lock
 RUN bundle config --global frozen 1
